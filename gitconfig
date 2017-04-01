@@ -1,0 +1,107 @@
+[user]
+  name = g4z3
+  email = haha@haha.com
+
+[color]
+  branch = true
+  diff = true
+  grep = true
+  pager = true
+  status = true
+  ui = always
+
+[grep]
+  linenumber = true
+
+[format]
+  signoff = true
+
+[core]
+  whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
+  editor = emacs -nw -q
+  pager = less
+  excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
+  autocrlf = input
+
+[log]
+  date = relative
+
+[alias]
+  ap = add --patch
+  b = branch
+  ba = branch -a
+  submod = submodule
+  changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+  changelog = log --pretty=format:\" * %s\"
+  shortnocolor = log --pretty= format:\"%h %cr %cn %s\"
+  diverges = !bash -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+  d = diff
+  dc = diff --cached
+  dis = diff --word-diff=color --word-diff-regex="[^[:space:],]+"
+  last = diff HEAD^
+  unstage = reset HEAD
+  uncommit = reset --soft HEAD^
+  undo-commit = !git uncommit
+  filelog = log -u
+  mt = mergetool
+  ss = stash
+  sl = stash list
+  sa = stash apply
+  sd = stash drop
+  st = status
+  l = log -18 --color=always --all --topo-order --pretty='format:%Cgreen%h%Creset %s%Cred%d%Creset %C(black bold)(by %an)%Creset'
+  ll = log --color=always --all --topo-order --pretty='format:%Cgreen%h%Creset %s%Cred%d%Creset %C(black bold)(by %an)%Creset'
+  gl = log -12 --color=always --all --graph --topo-order --pretty='format:%Cgreen%h%Creset %s %C(black bold)(by %an)%Creset%C(yellow bold)%d%Creset%n'
+  gll = log --color=always --all --graph --topo-order --pretty='format:%Cgreen%h%Creset %s %C(black bold)(%cr by %an)%Creset%C(yellow bold)%d%Creset%n'
+  pff = pull --ff-only
+  pmo = pull --no-ff
+  puhs = push
+  pu = !git push -u origin $(git currentbranch)
+  pus = push
+  up = merge --ff-only
+  join = merge --no-ff
+  co = checkout
+  ci = commit
+  cm = commit -m
+  re = remote
+  rb = rebase
+  rbm = rebase master
+  rbd = rebase develop
+  currentbranch = rev-parse --abbrev-ref HEAD
+  wdiff = diff --color-words
+  clean-merge = merge --ff-only
+  news = log -p HEAD@{1}..HEAD@{0}
+  restore = checkout HEAD --
+  dif = diff
+
+[i18n]
+  commitencoding = utf-8
+
+[ghi "highlight"]
+  style = colorful
+
+[ghi]
+  edtior = emacs -nw -q
+
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+
+[include]
+  path = ~/.gitconfig.local
+
+[hub]
+  protocol = git
+
+[column]
+  ui = always
+[push]
+  default = simple
+
+[http]
+  proxy = http://127.0.0.1:11080
+
+[https]
+  proxy = http://127.0.0.1:11080
